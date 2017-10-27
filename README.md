@@ -1,9 +1,9 @@
-# TweetCommand
+# tweet
 
 標準入力につぶやく内容を与えると,Twitterにその内容を投稿するスクリプト  
 開発中  
 
-# 環境
+## 環境
 macOS, Ubuntu, CentOSなど，シェルが使えるOS
 Go言語で記述されているので，Windowsでもコンパイルしてやれば動くはず(未確認)
 
