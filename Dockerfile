@@ -1,5 +1,6 @@
 FROM golang:1.11.1-alpine3.8 as builder
 
+Run apk --update --no-cache add git
 WORKDIR /go/src/tweet/
 COPY . .
 RUN  go get .
