@@ -4,7 +4,7 @@ ENV GO111MODULE on
 Run apk --update --no-cache add git gcc musl-dev
 WORKDIR /go/src/tweet/
 COPY . .
-RUN GOOS=linux go build -o tweet .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o tweet .
 
 
 FROM scratch
