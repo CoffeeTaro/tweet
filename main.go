@@ -2,14 +2,15 @@ package main
 
 import (
 	"bufio"
-	"github.com/ChimeraCoder/anaconda"
-	"github.com/joeshaw/envdecode"
 	"log"
 	"net/url"
 	"os"
+
+	"github.com/ChimeraCoder/anaconda"
+	"github.com/joeshaw/envdecode"
 )
 
-func Post(msg string) {
+func post(msg string) {
 	var ts struct {
 		ConsumerKey       string `env:"TWITTER_CONSUMER_KEY,required"`
 		ConsumerKeySecret string `env:"TWITTER_CONSUMER_SECRET,required"`
@@ -47,9 +48,9 @@ func main() {
 	tweet_max_length := 140
 	for i := 0; i < len(rmsg); i += tweet_max_length {
 		if i+tweet_max_length < len(rmsg) {
-			Post(string(rmsg[i : i+tweet_max_length]))
+			post(string(rmsg[i : i+tweet_max_length]))
 		} else {
-			Post(string(rmsg[i:]))
+			post(string(rmsg[i:]))
 		}
 	}
 }
