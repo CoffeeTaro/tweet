@@ -1,9 +1,9 @@
 FROM golang:1.11.1-alpine3.8 as builder
 
-Run apk --update --no-cache add git
+ENV GO111MODULE on
+Run apk --update --no-cache add git gcc musl-dev
 WORKDIR /go/src/tweet/
 COPY . .
-RUN  go get .
 RUN GOOS=linux go build -o tweet .
 
 
