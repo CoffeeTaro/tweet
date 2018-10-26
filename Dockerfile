@@ -7,7 +7,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o tweet .
 
 
-FROM scratch
+FROM busybox:1.29
 
 COPY --from=builder /go/src/tweet/tweet /root/
 CMD ["/root/tweet"]
