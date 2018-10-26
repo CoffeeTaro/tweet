@@ -23,7 +23,7 @@ export TWITTER_ACCESS_TOKEN_SECRET="your_access_token_secret"
 export TWITTER_SCREEN_NAME="your_screen_name"
 ```
 
-## 実行例
+## Example
 
 ```
 $ echo hoge | tweet
