@@ -1,13 +1,19 @@
 FROM golang:1.11.1-alpine3.8 as builder
 
-ENV GO111MODULE on
-Run apk --update --no-cache add git gcc musl-dev
-WORKDIR /go/src/tweet/
+RUN apk --update --no-cache add git
+WORKDIR /go/src/github.com/kotaru23/tweet
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o tweet .
+RUN go get .
+RUN CGO_ENABLED=0 GOOS=linux go build -o tweet
 
 
-FROM busybox:1.29
+FROM alpine:3.8 as certs
 
-COPY --from=builder /go/src/tweet/tweet /root/
-CMD ["/root/tweet"]
+RUN apk --update --no-cache add ca-certificates
+
+
+FROM scratch
+
+COPY --from=builder /go/src/github.com/kotaru23/tweet/tweet /go/bin/
+COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+CMD ["/go/bin/tweet"]

@@ -20,7 +20,7 @@ func post(msg string) {
 	}
 	// Get Keys of your Environment variables
 	if err := envdecode.Decode(&ts); err != nil {
-		log.Fatalln(err)
+		log.Fatal(err)
 	}
 	anaconda.SetConsumerKey(ts.ConsumerKey)
 	anaconda.SetConsumerSecret(ts.ConsumerKeySecret)
@@ -29,7 +29,10 @@ func post(msg string) {
 	v := url.Values{}
 	v.Set("screen_name", ts.ScreenName)
 
-	api.PostTweet(msg, v)
+	_, errp := api.PostTweet(msg, v)
+	if errp != nil {
+		log.Fatal(errp)
+	}
 }
 
 func main() {
