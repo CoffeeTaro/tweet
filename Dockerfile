@@ -3,7 +3,7 @@ FROM golang:1.11.1-alpine3.8 as builder
 RUN apk --update --no-cache add git
 WORKDIR /go/src/github.com/kotaru23/tweet
 COPY . .
-RUN go get .
+ENV GO111MODULE=on
 RUN CGO_ENABLED=0 GOOS=linux go build -o tweet
 
 
