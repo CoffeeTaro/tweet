@@ -1,17 +1,17 @@
 # tweet
 
-標準入力につぶやく内容を与えると,Twitterにその内容を投稿するプログラム
+Simple Command Line Twitter Client written in Golang.  
+Read stdin charactors, then post them to Twitter.
 
-
-### Download
+### Install
 
 ```
-$ git clone http://github.com/kotaru23/tweet
+$ go get github.com/kotaru23/tweet
 ```
 
-### 環境変数の設定
-.bashrcまたは.bash_profileに下記を記述  
-.bash_profileに書くことを推奨  
+### Set Environment Variables
+
+Write these on your ~/.bash_profile
 
 ```
 # Twitter API Keys
@@ -26,5 +26,5 @@ export TWITTER_SCREEN_NAME="your_screen_name"
 ## Example
 
 ```
-$ echo hoge | tweet
+$ echo "I'm hungry." | tweet
 ```
