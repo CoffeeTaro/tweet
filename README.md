@@ -1,7 +1,7 @@
 # tweet
 
 Simple Command Line Twitter Client written in Golang.  
-Read stdin charactors, then post them to Twitter.
+Read stdin characters, then post them to Twitter.
 
 ### Install
 
