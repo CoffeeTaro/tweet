@@ -1,4 +1,4 @@
-FROM golang:1.11.1-alpine3.8 as builder
+FROM golang:1.11.2-alpine3.8 as builder
 
 RUN apk --update --no-cache add git ca-certificates
 WORKDIR /go/src/github.com/kotaru23/tweet
